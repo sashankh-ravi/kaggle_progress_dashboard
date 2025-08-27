@@ -19,6 +19,7 @@ os.environ['KAGGLE_KEY'] = kaggle_api_key
 # Initialize the Kaggle API and authenticate
 kaggle_api = KaggleApi()
 kaggle_api.authenticate()
+# Authentication Complete
 
 # ----------------------------- #
 # Get all active competitions
