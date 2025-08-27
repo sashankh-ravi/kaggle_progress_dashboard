@@ -9,27 +9,14 @@ from st_aggrid import AgGrid, GridOptionsBuilder
 # Authenticate with Kaggle API
 # ----------------------------- #
 # Get Kaggle API Key from Streamlit secrets
-kaggle_api_key = st.secrets["kaggle"]["api_key"]
+kaggle_username = st.secrets["kaggle"]["username"]
+kaggle_api_key = st.secrets["kaggle"]["key"]
 
-# Determine the directory where the Kaggle credentials file should be stored
-# This will work both locally and in cloud environments
-kaggle_dir = os.path.expanduser("~/.kaggle")  # Default to user's home directory
+# Set the environment variables for Kaggle API
+os.environ['KAGGLE_USERNAME'] = kaggle_username
+os.environ['KAGGLE_KEY'] = kaggle_api_key
 
-# Create the .kaggle directory if it doesn't exist
-if not os.path.exists(kaggle_dir):
-    os.makedirs(kaggle_dir)
-
-# Define the path to the Kaggle credentials file
-kaggle_json_path = os.path.join(kaggle_dir, "kaggle.json")
-
-# Write the API key to the kaggle.json file
-with open(kaggle_json_path, 'w') as f:
-    json.dump({"username": "sashankhravi", "key": kaggle_api_key}, f)
-
-# Set the environment variable for the Kaggle API to use the credentials file
-os.environ['KAGGLE_CONFIG_DIR'] = kaggle_dir
-
-# Initialize the Kaggle API client and authenticate
+# Initialize the Kaggle API and authenticate
 kaggle_api = KaggleApi()
 kaggle_api.authenticate()
 
