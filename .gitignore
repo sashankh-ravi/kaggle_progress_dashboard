@@ -1,0 +1,17 @@
+# Ignore Streamlit secrets
+.streamlit/secrets.toml
+
+# Ignore Kaggle API configuration files (if you're not using Streamlit secrets)
+.kaggle/
+
+# Python bytecode files
+*.pyc
+__pycache__/
+
+# Environment files (e.g., for virtual environments)
+.env
+.venv
+venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
